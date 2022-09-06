@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const { questionsRouter } = require('./domain/question/question.controller');
 const { categoryRouter } = require('./domain/category/category.controller');
+const { quizRouter } = require('./domain/quiz/quiz.controller');
 
 /** EXPRESS */
 const app = express();
@@ -23,12 +24,14 @@ if (process.env.ENVIRONMENT === 'dev') {
 // Routes
 app.use('/api/v1', categoryRouter);
 app.use('/api/v1', questionsRouter);
+app.use('/api/v1', quizRouter);
 
 // Error handler
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   console.log(err.toString());
-  if (process.env.ENVIRONMENT === 'dev') return res.status(500).send(err.toString());
+  if (process.env.ENVIRONMENT === 'dev')
+    return res.status(500).send(err.toString());
 
   return res.status(500).send('Whoops! Something went wrong!');
 });
@@ -43,15 +46,19 @@ if (process.env.ENVIRONMENT === 'dev') {
 app.listen(process.env.PORT, () => {
   console.log(`Server running at http://localhost:${process.env.PORT}`);
 
-  mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
-    if (err) {
-      console.log(`Error connecting to database: ${err}`);
-      console.log('Shutting down server...');
-      return app.close();
+  mongoose.connect(
+    process.env.MONGO_URI,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    (err) => {
+      if (err) {
+        console.log(`Error connecting to database: ${err}`);
+        console.log('Shutting down server...');
+        return app.close();
+      }
+
+      console.log('Database connection established');
+
+      return 0;
     }
-
-    console.log('Database connection established');
-
-    return 0;
-  });
+  );
 });
