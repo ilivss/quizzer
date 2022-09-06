@@ -24,7 +24,10 @@ exports.seedQuestions = async () => {
   print('\tStep 2: Reading questions from disk...');
   let data = [];
   try {
-    const file = await fs.readFile(path.join('src', 'utils', 'questions_en.json'), 'utf-8');
+    const file = await fs.readFile(
+      path.join('src', 'utils', 'questions_en.json'),
+      'utf-8'
+    );
     data = JSON.parse(file);
     print('\t\tok!');
   } catch (err) {
@@ -34,7 +37,10 @@ exports.seedQuestions = async () => {
 
   // Map file data to Questions
   print('\tStep 3: Mapping file data to question documents...');
-  const questions = data.map(({ question, answer, category }) => new Question({ question, answer, category }));
+  const questions = data.map(
+    ({ question, answer, category }) =>
+      new Question({ question, answer, category })
+  );
   print('\t\tok!');
 
   // Save all docs
@@ -56,9 +62,13 @@ exports.seedQuestions = async () => {
 exports.main = async () => {
   // Connect to MongoDB
   print('\nConnecting to MongoDB...');
-  await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
-    if (err) throw new Error('Could not connect to MongoDB!');
-  });
+  await mongoose.connect(
+    process.env.MONGO_URI,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    (err) => {
+      if (err) throw new Error('Could not connect to MongoDB!');
+    }
+  );
   print('ok!');
 
   // Seed database

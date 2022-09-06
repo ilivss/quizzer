@@ -83,8 +83,12 @@ router.get('/questions/category/:categoryName', async (req, res, next) => {
     const limit = _limit ? parseInt(_limit, 10) : undefined;
     const skip = page && limit ? (page - 1) * limit : 0;
 
-    const questions = await Question.find({ category: categoryName }).skip(skip).limit(limit).exec();
-    if (!questions || questions.length <= 0) return res.status(404).send('No questions found!');
+    const questions = await Question.find({ category: categoryName })
+      .skip(skip)
+      .limit(limit)
+      .exec();
+    if (!questions || questions.length <= 0)
+      return res.status(404).send('No questions found!');
 
     return res.json(questions.map((q) => q.toJSON()));
   } catch (err) {

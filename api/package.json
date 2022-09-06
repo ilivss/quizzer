@@ -5,6 +5,8 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
+    "lint": "eslint --ext .js .",
+    "lint:fix": "eslint --ext .js . --fix",
     "seed": "node --require dotenv/config --eval 'require(\"./src/utils/seed.js\").main()'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
