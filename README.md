@@ -35,3 +35,4 @@ Follow the steps below start developing:
     $ docker compose up -d
     $ cd ./api && yarn run dev
    ```
+   > Swagger is accessible through http://localhost:5000/swagger
