@@ -6,7 +6,7 @@ Pub quiz webapplication developed for the course DWA at HAN University of Applie
 
 Follow the steps below start developing:
 
-1. Create a `.env` file in `./api`
+1. Create a `.env` file in `./api` with the following contents:
    ```
    PORT=5000
    MONGO_URI=mongodb://user:password@localhost:27017
@@ -31,7 +31,7 @@ Follow the steps below start developing:
 5. From now on you just have start the docker container and api:
 
    ```Bash
-   ~/.../quizzer/api
+   ~/.../quizzer
     $ docker compose up -d
     $ cd ./api && yarn run dev
    ```
