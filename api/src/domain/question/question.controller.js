@@ -52,16 +52,6 @@ router.get('/questions/:questionId', async (req, res, next) => {
  *          required: true
  *          schema:
  *            type: string
- *        - in: query
- *          name: page
- *          required: true
- *          schema:
- *            type: integer
- *        - in: query
- *          name: limit
- *          required: true
- *          schema:
- *            type: integer
  *     responses:
  *       200:
  *         description: questions
