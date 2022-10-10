@@ -45,6 +45,7 @@ if (process.env.ENVIRONMENT === 'dev') {
 /** START SERVER */
 app.listen(process.env.PORT, () => {
   console.log(`Server running at http://localhost:${process.env.PORT}`);
+  console.log(`Swagger: http://localhost:${process.env.PORT}/swagger`);
 
   mongoose.connect(
     process.env.MONGO_URI,
