@@ -1,5 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { IGetCategoriesResponse, ICreateQuizResponse } from "./types";
+import type {
+  IGetCategoriesResponse,
+  ICreateQuizResponse,
+  IGetQuizResponse,
+} from "./types";
 
 export const quizzerApi = createApi({
   reducerPath: "quizzerApi",
@@ -7,6 +11,9 @@ export const quizzerApi = createApi({
   endpoints: (builder) => ({
     getCategories: builder.query<IGetCategoriesResponse, void>({
       query: () => "/categories",
+    }),
+    getQuizById: builder.query<IGetQuizResponse, string>({
+      query: (quizId: string) => `/quizzes/${quizId}`,
     }),
     createQuiz: builder.mutation<ICreateQuizResponse, void>({
       query: () => ({
@@ -17,4 +24,8 @@ export const quizzerApi = createApi({
   }),
 });
 
-export const { useCreateQuizMutation, useGetCategoriesQuery } = quizzerApi;
+export const {
+  useCreateQuizMutation,
+  useGetCategoriesQuery,
+  useGetQuizByIdQuery,
+} = quizzerApi;

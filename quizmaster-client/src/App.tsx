@@ -7,10 +7,9 @@ import { NotFound } from "./pages/NotFound";
 export const App = () => {
   return (
     <div className="App">
-      <h1>Welcome to React Router!</h1>
       <Routes>
         <Route path="/" element={<NewQuiz />} />
-        <Route path="about" element={<NotFound />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );
