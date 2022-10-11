@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "sudo docker compose up -d && concurrently \"cd ./api && yarn run dev\" \"cd ./quizmaster-client && yarn run start\""
+    "start:dev": "sudo docker compose up -d && concurrently \"cd ./api && yarn run start:dev\""
   },
   "dependencies": {
     "concurrently": "^7.4.0"
