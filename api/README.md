@@ -44,7 +44,7 @@ $ yarn run test:cov
 # swagger ui
 http://localhost:3000/api
 
-# downloader openapi json
+# download openapi json
 http://localhost:3000/api-json
 
 # example annotation
